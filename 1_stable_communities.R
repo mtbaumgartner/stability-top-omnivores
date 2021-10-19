@@ -25,7 +25,7 @@ source("ODEstruc.R")
 source("keep_living.R")
 
 #---- Initial setups ----
-Nwebs = 1e4 # Approx. 30 webs for each S*C combination (change to 3e4!!!)
+Nwebs = 3e4 # Approx. 30 webs for each S*C combination
 inits <- data.frame(S = sample(15:50, Nwebs, replace = T),
                     C = runif(Nwebs, min = 0.1, max = 0.3))
 plot(inits)
@@ -76,7 +76,7 @@ stable_comm <- foreach(i = 1:Nwebs,
                        .packages = "deSolve",
                        .options.snow = opts) %dopar%
   {
-    runODE(mod = start_comm[[i]], times = 300) # Change to 5000
+    runODE(mod = start_comm[[i]], times = 5000)
   }
 #save(stable_comm, file = "stable_communities.RData")
 
