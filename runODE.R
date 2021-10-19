@@ -14,7 +14,7 @@ runODE <- function(mod, times){
     Fji <- matrix(0, nrow = pars$S, ncol = pars$S)
     for(j in 1:pars$S){
       Fji[j,] <- (pars$wi * Bs[j]^pars$q) /
-        (pars$B0^pars$q + Bs * pars$B0^pars$q + 
+        (pars$B0^pars$q + Bs * pars$B0^pars$q +
            sum(pars$wi[-j] * Bs[-j]^pars$q))
     }
     # for(j in 1:pars$S){
@@ -24,7 +24,7 @@ runODE <- function(mod, times){
     #          sum(pars$wi[i] * Bs[-j]^pars$q))
     #   }
     # }
-    
+
     # ODE solution
     for(i in 1:pars$S){
 
@@ -53,6 +53,9 @@ runODE <- function(mod, times){
   
   mod$Bs <- output[nrow(output),-1]
   alive <- mod$Bs > 1e-30
+  
+  # keep time series resumed
+  output <- output[floor(seq(1, nrow(output), length.out = 100)),]
   
   out <- c(mod, list(ODEsteps = output, alive = alive))
   
