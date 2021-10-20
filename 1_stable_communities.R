@@ -8,8 +8,6 @@
 # Load required packages and functions
 rm(list = ls())
 
-library(magrittr)
-library(igraph)
 library(deSolve)
 library(rootSolve)
 library(numDeriv)
