@@ -124,7 +124,8 @@ metrics_without_random <- data.frame(ID = omnivores_removed$webID[omnivores_remo
 metrics_without_random$S <- sapply(without_random_stable, function(x){x$S}) # Species richness
 metrics_without_random$C <- sapply(without_random_stable, function(x){x$C}) # Connectance
 metrics_without_random$q <- sapply(without_random_stable, function(x){x$q}) # Hill's exponent
-metrics_without_random$prop_alive <- metrics_without_random$S / inits$S[omnivores_removed$Nomniv > 0]
+metrics_without_random$rand_TL <- random_removed$TLremoved[omnivores_removed$Nomniv > 0] # TL of removed species
+metrics_without_random$delta_TL <- random_removed$TLdelta[omnivores_removed$Nomniv > 0] # delta TL between random and omnivore
 metrics_without_random$maxeig_Re <- sapply(jacobians_random, function(x){Re(eigen(x)$value[1])})
 metrics_without_random$maxeig_Im <- sapply(jacobians_random, function(x){Im(eigen(x)$value[1])})
 

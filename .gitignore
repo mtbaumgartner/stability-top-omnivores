@@ -3,3 +3,6 @@
 *.RData
 *.Rproj
 .Ruserdata
+4_analysis.R
+Fig1_GAMs.tiff
+Fig_scatter.tiff

@@ -29,7 +29,8 @@ runODE <- function(mod, times){
     for(i in 1:pars$S){
 
       if(pars$TL[i] == 1){ # producers
-        dBs[i] <- pars$ei[i] * pars$xi[i] * Bs[i] * exp((1-sum(Bs))/pars$K) -
+        #dBs[i] <- pars$ei[i] * pars$xi[i] * Bs[i] * exp((1-sum(Bs))/pars$K) -
+        dBs[i] <- pars$ei[i] * pars$xi[i] * Bs[i] * (1 - (sum(BS) / pars$K)) -
           sum((pars$y/pars$ei[i]) * Bs * Fji[i,]) -
           (1 - pars$ei[i]) * pars$xi[i] * Bs[i]
       }

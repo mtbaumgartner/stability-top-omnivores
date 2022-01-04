@@ -108,7 +108,6 @@ metrics_stable <- data.frame(ID = seq(Nwebs))
 metrics_stable$S <- sapply(stable_comm, function(x){x$S}) # Species richness
 metrics_stable$C <- sapply(stable_comm, function(x){x$C}) # Connectance
 metrics_stable$q <- sapply(stable_comm, function(x){x$q}) # Hill's exponent
-metrics_stable$prop_alive <- metrics_stable$S / inits$S
 metrics_stable$maxeig_Re <- sapply(jacobians_stable, function(x){Re(eigen(x)$values[1])})
 metrics_stable$maxeig_Im <- sapply(jacobians_stable, function(x){Im(eigen(x)$values[1])})
 

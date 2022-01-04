@@ -117,8 +117,10 @@ jacobians_omnivores <- foreach(i = 1:Nwebs,
 metrics_without_omnivores <- data.frame(ID = omnivores_removed$webID[omnivores_removed$Nomniv > 0])
 metrics_without_omnivores$S <- sapply(without_omnivores_stable, function(x){x$S}) # Species richness
 metrics_without_omnivores$C <- sapply(without_omnivores_stable, function(x){x$C}) # Connectance
+metrics_without_omnivores$omniv_N <- omnivores_removed$Nomniv[omnivores_removed$Nomniv > 0] # number of omnivores
+metrics_without_omnivores$omniv_TL <- omnivores_removed$TLremoved[omnivores_removed$Nomniv > 0] # TL of removed omnivores
+metrics_without_omnivores$omniv_TY <- omnivores_removed$TYremoved[omnivores_removed$Nomniv > 0] # type of omnivory
 metrics_without_omnivores$q <- sapply(without_omnivores_stable, function(x){x$q}) # Hill's exponent
-metrics_without_omnivores$prop_alive <- metrics_without_omnivores$S / inits$S[omnivores_removed$Nomniv > 0]
 metrics_without_omnivores$maxeig_Re <- sapply(jacobians_omnivores, function(x){Re(eigen(x)$value[1])})
 metrics_without_omnivores$maxeig_Im <- sapply(jacobians_omnivores, function(x){Im(eigen(x)$value[1])})
 
